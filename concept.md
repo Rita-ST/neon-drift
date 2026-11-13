@@ -4,12 +4,12 @@
 Fast, arcade-style online racing for 2-4 players. Everyone drives a neon car on a shared track hosted on an internet server. Pickups give boosts or let you hit rivals. A race lasts about 3 minutes.
 
 ## Game modes
-1. **Race:** 3 laps, first to finish wins. Points by finishing position.
-2. **Time Attack:** best lap time goes on an online leaderboard.
+1. **Race:** Circuit races, 1, 2, 3 laps races, first to finish wins. Points are given accordingly by finishing position.
+2. **Time Attack:** best lap time goes on an online leaderboard. Best lap time gets extra point. No extra points for circuit races.
 
 ## Scenarios
 - **Lobby:** a player creates a room (4-letter code) or joins one. Players pick a car and press Ready.
-- **Race:** 3-2-1 countdown, then free driving. The server checks checkpoints so shortcuts do not count.
+- **Race:** 3-2-1 countdown, then free driving. The server checks checkpoints so shortcuts do not count. 
 - **Finish:** after the first finisher, others have 20 s to complete. Results screen, then rematch or back to lobby.
 - **Disconnect:** the car is parked for 10 s, then removed. The player can rejoin with the same session token.
 
@@ -22,10 +22,10 @@ Fast, arcade-style online racing for 2-4 players. Everyone drives a neon car on 
 | Ghost | Medium | Medium | Short invisibility on pickup |
 
 ## Power-ups
-- **Boost:** speed burst for 2 s.
-- **Shield:** absorbs one hit.
-- **EMP:** slows the nearest car ahead.
-- **Oil:** drops a slick behind you.
+- **Boost:** speed burst for 2 s. Used upon input
+- **Shield:** absorbs one hit. Used immediatly upon picking.
+- **EMP:** slows the nearest car ahead. Used upon input.
+- **Oil:** drops a slick behind you. Used immediatly upon picking.
 
 ## Tracks
 1. Downtown Loop (beginner)
