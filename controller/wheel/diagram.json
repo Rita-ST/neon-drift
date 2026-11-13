@@ -1,7 +1,6 @@
-
 {
   "version": 1,
-  "author": "Neon Drift Team 3",
+  "author": "Rita Gadlela",
   "editor": "wokwi",
   "parts": [
     {
@@ -83,28 +82,32 @@
     }
   ],
   "connections": [
-    ["steering:VCC", "esp:3V3", "red", []],
-    ["steering:GND", "esp:GND.1", "black", []],
-    ["steering:SIG", "esp:34", "green", []],
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
 
-    ["throttle:1.l", "esp:25", "green", []],
-    ["throttle:2.l", "esp:GND.1", "black", []],
+    [ "steering:VCC", "esp:3V3", "red", [] ],
+    [ "steering:GND", "esp:GND.1", "black", [] ],
+    [ "steering:SIG", "esp:34", "green", [] ],
 
-    ["brake:1.l", "esp:26", "green", []],
-    ["brake:2.l", "esp:GND.1", "black", []],
+    [ "throttle:1.l", "esp:25", "green", [] ],
+    [ "throttle:2.l", "esp:GND.1", "black", [] ],
 
-    ["item:1.l", "esp:27", "green", []],
-    ["item:2.l", "esp:GND.1", "black", []],
+    [ "brake:1.l", "esp:26", "green", [] ],
+    [ "brake:2.l", "esp:GND.1", "black", [] ],
 
-    ["esp:2", "ledResistor:1", "green", []],
-    ["ledResistor:2", "feedbackLed:A", "green", []],
-    ["feedbackLed:C", "esp:GND.1", "black", []],
+    [ "item:1.l", "esp:27", "green", [] ],
+    [ "item:2.l", "esp:GND.1", "black", [] ],
 
-    ["buzzer:1", "esp:GND.1", "black", []],
-    ["buzzer:2", "esp:18", "green", []]
+    [ "esp:2", "ledResistor:1", "green", [] ],
+    [ "ledResistor:2", "feedbackLed:A", "green", [] ],
+    [ "feedbackLed:C", "esp:GND.1", "black", [] ],
+
+    [ "buzzer:1", "esp:GND.1", "black", [] ],
+    [ "buzzer:2", "esp:18", "green", [] ]
   ],
   "serialMonitor": {
     "display": "always",
     "newline": "lf"
-  }
+  },
+  "dependencies": {}
 }
