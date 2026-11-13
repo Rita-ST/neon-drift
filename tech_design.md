@@ -550,4 +550,5 @@ Neon Drift combines multiplayer game development, embedded systems and real-time
 
 The project demonstrates how simulated microcontrollers can be used as interactive game controllers and connected to a shared online multiplayer environment.
 
-The modular architecture allows the three main components — game client, game server and controller system — to be developed independently and integrated into one complete game.
+The modular architecture allows the thre main components — game client, game server and controller system — to be developed independently and integrated into one complete game.
+  
