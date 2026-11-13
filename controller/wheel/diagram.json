@@ -1,0 +1,110 @@
+
+{
+  "version": 1,
+  "author": "Neon Drift Team 3",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "steering",
+      "top": -30,
+      "left": 280,
+      "attrs": {
+        "value": "512"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "throttle",
+      "top": 150,
+      "left": 280,
+      "attrs": {
+        "color": "green",
+        "label": "THROTTLE",
+        "key": "W"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "brake",
+      "top": 230,
+      "left": 280,
+      "attrs": {
+        "color": "red",
+        "label": "BRAKE",
+        "key": "S"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "item",
+      "top": 310,
+      "left": 280,
+      "attrs": {
+        "color": "blue",
+        "label": "USE ITEM",
+        "key": "E"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "feedbackLed",
+      "top": 150,
+      "left": 480,
+      "attrs": {
+        "color": "green",
+        "label": "FEEDBACK"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "ledResistor",
+      "top": 190,
+      "left": 480,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 270,
+      "left": 480,
+      "attrs": {
+        "volume": "0.5"
+      }
+    }
+  ],
+  "connections": [
+    ["steering:VCC", "esp:3V3", "red", []],
+    ["steering:GND", "esp:GND.1", "black", []],
+    ["steering:SIG", "esp:34", "green", []],
+
+    ["throttle:1.l", "esp:25", "green", []],
+    ["throttle:2.l", "esp:GND.1", "black", []],
+
+    ["brake:1.l", "esp:26", "green", []],
+    ["brake:2.l", "esp:GND.1", "black", []],
+
+    ["item:1.l", "esp:27", "green", []],
+    ["item:2.l", "esp:GND.1", "black", []],
+
+    ["esp:2", "ledResistor:1", "green", []],
+    ["ledResistor:2", "feedbackLed:A", "green", []],
+    ["feedbackLed:C", "esp:GND.1", "black", []],
+
+    ["buzzer:1", "esp:GND.1", "black", []],
+    ["buzzer:2", "esp:18", "green", []]
+  ],
+  "serialMonitor": {
+    "display": "always",
+    "newline": "lf"
+  }
+}
