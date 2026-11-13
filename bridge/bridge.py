@@ -1,25 +1,25 @@
 
 import os
 import json
-import time
 import threading
 
 import serial
 import websocket
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
-SERVER_URL = os.getenv("GAME_SERVER_URL")
-ROOM_CODE = os.getenv("ROOM_CODE")
-PLAYER_ID = os.getenv("PLAYER_ID")
+SERVER_URL = os.getenv("GAME_SERVER_URL", "ws://localhost:8787")
+ROOM_CODE = os.getenv("ROOM_CODE", "")
+# PLAYER_ID is the driver name typed in the browser, or the server player id.
+PLAYER_ID = os.getenv("PLAYER_NAME") or os.getenv("PLAYER_ID") or ""
 SERIAL_URL = os.getenv(
     "SERIAL_URL",
     "rfc2217://localhost:4000"
 )
 
-if not SERVER_URL or not ROOM_CODE or not PLAYER_ID:
-    raise RuntimeError("Missing bridge configuration in .env")
+if not ROOM_CODE or not PLAYER_ID:
+    raise RuntimeError("Set ROOM_CODE and PLAYER_ID (the driver name) in bridge/.env")
 
 running = True
 sequence = 0
@@ -32,7 +32,10 @@ def handle_server_messages(ws, controller):
             message = ws.recv()
             data = json.loads(message)
 
-            if data.get("type") == "controller_feedback":
+            msg_type = data.get("type")
+            payload = data.get("data") if isinstance(data.get("data"), dict) else {}
+
+            if msg_type == "controller_feedback":
                 event = data.get("event", "")
 
                 controller.write(
@@ -43,6 +46,10 @@ def handle_server_messages(ws, controller):
                 )
 
                 print("Controller feedback:", event)
+            elif msg_type == "controller_attached":
+                print("Wheel linked to", payload.get("playerName", PLAYER_ID))
+            elif msg_type == "command_rejected":
+                print("Server rejected:", payload.get("code"), payload.get("message"))
 
         except websocket.WebSocketTimeoutException:
             continue
@@ -62,6 +69,7 @@ def main():
         timeout=1
     )
 
+    print(f"Linking {PLAYER_ID} to room {ROOM_CODE} at {SERVER_URL}")
     print("Connecting to game server...")
 
     ws = websocket.create_connection(
