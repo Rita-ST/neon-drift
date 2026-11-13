@@ -5,9 +5,9 @@ An online multiplayer top-down racing game for 2-4 players. Players race neon ca
 ## Team
 | Name | Role |
 |------|------|
-| Student 1 | Game server & networking |
-| Student 2 | Game screen (web client) |
-| Student 3 | Wokwi controllers, bridge & docs |
+| Batuhan Mert Elma | Game server & networking |
+| Muhsin Arsu | Game screen (web client) |
+| Rita Gadlela | Wokwi controllers, bridge & docs |
 
 ## Docs
 - [Game concept](concept.md)
