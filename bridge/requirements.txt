@@ -1,0 +1,4 @@
+
+pyserial
+websocket-client
+python-dotenv
